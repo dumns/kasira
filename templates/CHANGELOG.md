@@ -23,7 +23,7 @@ Dasar Ordinara: v0.1.0
 
 - **Halaman Transaksi Owner** (`templates/owner/transaksi.html`): riwayat transaksi semua outlet dengan pencarian, filter (periode, outlet, status, metode), tabel berstatus (Selesai, Menunggu bayar, Dibatalkan, Refund), dan pagination. Kolom menyesuaikan lebar layar: di mobile hanya No., Total, dan Status; Waktu, Pesanan, dan aksi muncul mulai `sm`; Outlet dan Pembayaran mulai `xl`; Kasir mulai `2xl`. Menu Transaksi di sidebar dan tautan "Lihat semua" di dashboard kini mengarah ke halaman ini.
 
-- **Layar kasir Restoran & Kafe** (`templates/kasir/index.html`), dipakai bersama: Owner membukanya dari tombol **Kasir** di navbar dan kembali lewat tombol panah di navbar. Layar penuh tanpa sidebar: pencarian menu, kategori, kartu menu dengan penanda jumlah, dan panel pesanan (Dine-in atau Take away, meja, jumlah per item, catatan, subtotal, pajak, total, Simpan, Bayar). Di layar sempit panel pesanan menjadi drawer dari kanan lewat tombol "4 item".
+- **Layar kasir Restoran & Kafe** (`templates/kasir/index.html`), dipakai bersama: Owner membukanya dari tombol **Kasir** di navbar dan kembali ke dashboard lewat menu Dashboard di dropdown profil. Layar penuh tanpa sidebar: pencarian menu, kategori, kartu menu dengan penanda jumlah, dan panel pesanan (Dine-in atau Take away, meja, jumlah per item, catatan, subtotal, pajak, total, Simpan, Bayar). Di layar sempit panel pesanan menjadi drawer dari kanan lewat tombol "4 item".
 
 - **Mockup interaktif (demo, tanpa API)**: skrip per halaman di `assets/js` dengan helper bersama `demo.js` (rupiah, toast yang menumpuk dari atas ke bawah, sinkron outlet).
   - Kasir: tambah menu dengan klik, ubah jumlah di keranjang (hapus saat 0), filter kategori dan pencarian, Take away menonaktifkan meja, total dan pajak dihitung. Alur Bayar lewat modal: Tunai (uang diterima, tombol cepat, kembalian atau kurang), QRIS, Kartu, Transfer, layar berhasil dengan Cetak struk, lalu pesanan baru dengan nomor naik. Keranjang kosong menampilkan keadaan kosong dan menonaktifkan Bayar.
@@ -35,6 +35,8 @@ Dasar Ordinara: v0.1.0
 
 ### Changed
 
+- **Nomor invoice hanya muncul setelah pembayaran**: panel pesanan di layar kasir tidak lagi menampilkan "#INV-…" (judul "Pesanan" saja, dan toast Simpan tanpa nomor). Nomor tampil di layar struk setelah pembayaran berhasil, dan naik untuk transaksi berikutnya.
+- **Layar kasir tanpa tombol kembali**: panah kembali di navbar dihapus; menu **Dashboard** ada di dropdown profil layar kasir.
 - **Tombol Kasir pindah ke navbar** (semua halaman Owner): tombol utama di kiri profil, bukan lagi item di sidebar.
 - **Profil pengguna pindah ke navbar** (semua halaman Owner dengan sidebar): avatar, nama, dan peran di kanan navbar (nama dan peran disembunyikan di mobile), dengan menu dropdown berisi identitas akun (nama dan email), Profil saya, Pengaturan akun, dan Keluar. Kartu pengguna di dasar sidebar dihapus.
 - **Pencarian dan notifikasi dihapus dari navbar** untuk sementara.

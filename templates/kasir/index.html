@@ -14,7 +14,6 @@
 
 <header class="z-30 flex h-16 shrink-0 items-center justify-between gap-3 border-b border-border bg-surface px-4 sm:px-6">
   <div class="flex min-w-0 items-center gap-3">
-    <a href="../owner/index.html" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300 -ms-2" aria-label="Kembali ke dashboard"><i class="ori ori-arrow-left text-xl"></i></a>
     <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-control bg-primary-600 text-white"><i class="ori ori-storefront text-lg"></i></span>
     <div class="min-w-0">
       <p class="truncate text-sm font-semibold leading-tight">Kasir</p>
@@ -41,6 +40,7 @@
           </span>
         </div>
         <div class="my-1 h-px bg-border"></div>
+        <a href="../owner/index.html" class="flex items-center gap-3 rounded-control px-3 py-2.5 text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800"><i class="ori ori-house text-lg"></i>Dashboard</a>
         <a href="#" class="flex items-center gap-3 rounded-control px-3 py-2.5 text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800"><i class="ori ori-user-circle text-lg"></i>Profil saya</a>
         <a href="#" class="flex items-center gap-3 rounded-control px-3 py-2.5 text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800"><i class="ori ori-gear text-lg"></i>Pengaturan akun</a>
         <div class="my-1 h-px bg-border"></div>
@@ -142,10 +142,7 @@
 
   <aside id="cart" class="fixed inset-y-0 end-0 z-40 flex w-full max-w-sm translate-x-full flex-col border-s border-border bg-surface transition-transform lg:static lg:z-auto lg:w-96 lg:max-w-none lg:shrink-0 lg:translate-x-0" aria-label="Pesanan">
     <div class="flex h-16 shrink-0 items-center justify-between gap-3 border-b border-border px-5">
-      <div>
-        <h2 class="font-display text-lg font-bold leading-tight">Pesanan</h2>
-        <p data-order-no class="text-xs text-fg-muted">#INV-2042</p>
-      </div>
+      <h2 class="font-display text-lg font-bold">Pesanan</h2>
       <button type="button" data-drawer-hide="cart" aria-controls="cart" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300 lg:hidden" aria-label="Tutup"><i class="ori ori-x text-lg"></i></button>
     </div>
 

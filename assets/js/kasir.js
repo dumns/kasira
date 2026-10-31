@@ -137,7 +137,7 @@
   });
 
   btnSave.addEventListener("click", function () {
-    Demo.toast("Pesanan #INV-" + orderNo + " disimpan sebagai draft");
+    Demo.toast("Pesanan disimpan sebagai draft");
   });
 
   /* Pembayaran */
@@ -220,7 +220,6 @@
     order.slice().forEach(function (n) { items[n].qty = 0; syncCard(n); });
     order = [];
     orderNo++;
-    $$("[data-order-no]").forEach(function (el) { el.textContent = "#INV-" + orderNo; });
     render();
     Demo.toast("Pembayaran berhasil dicatat");
   }
