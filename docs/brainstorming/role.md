@@ -8,6 +8,7 @@ Role dibagi dua sisi: **internal** (tim pembuat platform) dan **eksternal** (pen
 |---|---|---|
 | 1 | **Owner boleh membuat role kustom.** | Perlu permission granular dan editor role di sisi tenant. Role bawaan tetap disediakan sebagai template. |
 | 2 | **Role yang setara (selevel) tidak bisa mengakses satu sama lain. Hanya tingkat di atasnya yang bisa.** | Setiap role punya **level** dalam hierarki. Akses lintas role (lihat, kelola, reset, nonaktifkan, lihat aktivitas) hanya dari level lebih tinggi ke level lebih rendah. |
+| 3 | **Role di level atas bisa memakai layar kerja role di bawahnya** (mis. Owner membuka layar Kasir dan membuat transaksi). | Menu Owner memuat entri Kasir; layar kasir dipakai bersama, bukan salinan terpisah. Transaksi yang dibuat tercatat atas nama pengguna yang login (Owner), bukan kasir lain. |
 
 Aturan turunan (usulan, perlu dikonfirmasi):
 - Berlaku untuk akses ke **user dan data milik role lain** (profil, aktivitas, transaksi yang diinput, pengaturan akun), bukan sekadar akses menu.

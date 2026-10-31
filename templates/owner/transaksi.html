@@ -18,13 +18,19 @@
     <span class="font-display text-lg font-bold">Kasira</span>
   </div>
   <div class="border-b border-border p-3">
-    <button type="button" class="flex w-full cursor-pointer items-center justify-between gap-3 rounded-control border border-border bg-surface px-3 py-2 text-start hover:bg-neutral-50">
+    <button type="button" id="outlet-toggle" data-dropdown-toggle="outlet-menu" data-dropdown-placement="bottom-start" data-dropdown-offset-distance="6" class="flex w-full cursor-pointer items-center justify-between gap-3 rounded-control border border-border bg-surface px-3 py-2 text-start hover:bg-neutral-50">
       <span class="min-w-0">
         <span class="block truncate text-sm font-semibold">Kopi Senja</span>
-        <span class="block truncate text-xs text-fg-muted">Semua outlet</span>
+        <span data-outlet-label class="block truncate text-xs text-fg-muted">Semua outlet</span>
       </span>
       <i class="ori ori-caret-down text-fg-subtle"></i>
     </button>
+    <div id="outlet-menu" class="z-50 hidden w-56 rounded-card border border-border bg-surface p-2 shadow-none">
+      <button type="button" data-outlet-option="Semua outlet" class="flex w-full cursor-pointer items-center justify-between rounded-control px-3 py-2.5 text-start text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800">Semua outlet</button>
+      <button type="button" data-outlet-option="Dago" class="flex w-full cursor-pointer items-center justify-between rounded-control px-3 py-2.5 text-start text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800">Dago</button>
+      <button type="button" data-outlet-option="Braga" class="flex w-full cursor-pointer items-center justify-between rounded-control px-3 py-2.5 text-start text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800">Braga</button>
+      <button type="button" data-outlet-option="Setiabudi" class="flex w-full cursor-pointer items-center justify-between rounded-control px-3 py-2.5 text-start text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800">Setiabudi</button>
+    </div>
   </div>
   <nav class="flex flex-1 flex-col gap-5 overflow-y-auto scrollbar-none p-3">
       <div class="flex flex-col gap-1">
@@ -55,6 +61,8 @@
       <button type="button" data-drawer-target="sidebar" data-drawer-toggle="sidebar" aria-controls="sidebar" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300 -ms-2 lg:hidden" aria-label="Buka menu"><i class="ori ori-list text-xl"></i></button>
       <span class="font-medium text-fg">Transaksi</span>
     </div>
+    <div class="flex shrink-0 items-center gap-2">
+      <a href="../kasir/index.html" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 text-sm bg-primary-600 text-white hover:bg-hover-primary focus-visible:ring-primary-500"><i class="ori ori-shopping-cart text-base"></i>Kasir</a>
     <div class="flex shrink-0 items-center">
       <button type="button" data-dropdown-toggle="user-menu" data-dropdown-placement="bottom-end" data-dropdown-offset-distance="8" class="flex cursor-pointer items-center gap-3 rounded-control py-1.5 ps-1.5 pe-1.5 duration-fast hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 sm:pe-3" aria-label="Menu akun">
         <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-600 text-sm font-semibold text-white">AD</span>
@@ -79,6 +87,7 @@
         <a href="onboarding-kategori.html" class="flex items-center gap-3 rounded-control px-3 py-2.5 text-sm font-medium text-danger-700 duration-fast hover:bg-danger-50"><i class="ori ori-sign-out text-lg"></i>Keluar</a>
       </div>
     </div>
+    </div>
   </header>
   <main class="flex w-full flex-1 flex-col gap-6 p-4 sm:p-6">
     <div class="flex flex-wrap items-start justify-between gap-4">
@@ -86,7 +95,7 @@
         <h1 class="font-display text-2xl font-bold">Transaksi</h1>
         <p class="mt-1 text-sm text-fg-muted">Riwayat transaksi semua outlet.</p>
       </div>
-      <div class="flex flex-wrap items-center gap-2"><button type="button" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 text-sm border border-border bg-surface text-neutral-700 hover:bg-neutral-50 focus-visible:ring-neutral-300"><i class="ori ori-download-simple text-base"></i>Ekspor</button></div>
+      <div class="flex flex-wrap items-center gap-2"><button type="button" data-export class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 text-sm border border-border bg-surface text-neutral-700 hover:bg-neutral-50 focus-visible:ring-neutral-300"><i class="ori ori-download-simple text-base"></i>Ekspor</button></div>
     </div>
 
     <div class="rounded-card border border-border/70 bg-surface flex flex-wrap items-center gap-3 p-4">
@@ -119,7 +128,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="border-t border-border duration-fast hover:bg-neutral-50">
+            <tr data-row data-outlet="Dago" data-status="Selesai" data-method="QRIS" data-text="#inv-2041 meja 04" class="border-t border-border duration-fast hover:bg-neutral-50">
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5 font-medium"><a href="#" class="hover:text-primary-700">#INV-2041</a></td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 text-fg-muted sm:table-cell">31 Okt, 14:32</td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 sm:table-cell">Meja 04</td>
@@ -130,7 +139,7 @@
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-success-50 text-success-700">Selesai</span></td>
               <td class="hidden px-3 py-2 sm:table-cell"><div class="flex justify-end"><a href="#" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Lihat #INV-2041"><i class="ori ori-eye text-lg"></i></a></div></td>
             </tr>
-            <tr class="border-t border-border duration-fast hover:bg-neutral-50">
+            <tr data-row data-outlet="Dago" data-status="Selesai" data-method="Tunai" data-text="#inv-2040 take away" class="border-t border-border duration-fast hover:bg-neutral-50">
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5 font-medium"><a href="#" class="hover:text-primary-700">#INV-2040</a></td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 text-fg-muted sm:table-cell">31 Okt, 14:18</td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 sm:table-cell">Take away</td>
@@ -141,7 +150,7 @@
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-success-50 text-success-700">Selesai</span></td>
               <td class="hidden px-3 py-2 sm:table-cell"><div class="flex justify-end"><a href="#" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Lihat #INV-2040"><i class="ori ori-eye text-lg"></i></a></div></td>
             </tr>
-            <tr class="border-t border-border duration-fast hover:bg-neutral-50">
+            <tr data-row data-outlet="Braga" data-status="Menunggu bayar" data-method="Kartu debit" data-text="#inv-2039 meja 11" class="border-t border-border duration-fast hover:bg-neutral-50">
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5 font-medium"><a href="#" class="hover:text-primary-700">#INV-2039</a></td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 text-fg-muted sm:table-cell">31 Okt, 14:05</td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 sm:table-cell">Meja 11</td>
@@ -152,7 +161,7 @@
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-warning-50 text-warning-700">Menunggu bayar</span></td>
               <td class="hidden px-3 py-2 sm:table-cell"><div class="flex justify-end"><a href="#" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Lihat #INV-2039"><i class="ori ori-eye text-lg"></i></a></div></td>
             </tr>
-            <tr class="border-t border-border duration-fast hover:bg-neutral-50">
+            <tr data-row data-outlet="Braga" data-status="Selesai" data-method="QRIS" data-text="#inv-2038 take away" class="border-t border-border duration-fast hover:bg-neutral-50">
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5 font-medium"><a href="#" class="hover:text-primary-700">#INV-2038</a></td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 text-fg-muted sm:table-cell">31 Okt, 13:52</td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 sm:table-cell">Take away</td>
@@ -163,7 +172,7 @@
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-success-50 text-success-700">Selesai</span></td>
               <td class="hidden px-3 py-2 sm:table-cell"><div class="flex justify-end"><a href="#" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Lihat #INV-2038"><i class="ori ori-eye text-lg"></i></a></div></td>
             </tr>
-            <tr class="border-t border-border duration-fast hover:bg-neutral-50">
+            <tr data-row data-outlet="Dago" data-status="Dibatalkan" data-method="Tunai" data-text="#inv-2037 meja 02" class="border-t border-border duration-fast hover:bg-neutral-50">
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5 font-medium"><a href="#" class="hover:text-primary-700">#INV-2037</a></td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 text-fg-muted sm:table-cell">31 Okt, 13:40</td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 sm:table-cell">Meja 02</td>
@@ -174,7 +183,7 @@
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-danger-50 text-danger-700">Dibatalkan</span></td>
               <td class="hidden px-3 py-2 sm:table-cell"><div class="flex justify-end"><a href="#" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Lihat #INV-2037"><i class="ori ori-eye text-lg"></i></a></div></td>
             </tr>
-            <tr class="border-t border-border duration-fast hover:bg-neutral-50">
+            <tr data-row data-outlet="Dago" data-status="Selesai" data-method="QRIS" data-text="#inv-2036 meja 07" class="border-t border-border duration-fast hover:bg-neutral-50">
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5 font-medium"><a href="#" class="hover:text-primary-700">#INV-2036</a></td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 text-fg-muted sm:table-cell">31 Okt, 13:26</td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 sm:table-cell">Meja 07</td>
@@ -185,7 +194,7 @@
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-success-50 text-success-700">Selesai</span></td>
               <td class="hidden px-3 py-2 sm:table-cell"><div class="flex justify-end"><a href="#" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Lihat #INV-2036"><i class="ori ori-eye text-lg"></i></a></div></td>
             </tr>
-            <tr class="border-t border-border duration-fast hover:bg-neutral-50">
+            <tr data-row data-outlet="Braga" data-status="Selesai" data-method="Transfer" data-text="#inv-2035 meja 05" class="border-t border-border duration-fast hover:bg-neutral-50">
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5 font-medium"><a href="#" class="hover:text-primary-700">#INV-2035</a></td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 text-fg-muted sm:table-cell">31 Okt, 13:11</td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 sm:table-cell">Meja 05</td>
@@ -196,7 +205,7 @@
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-success-50 text-success-700">Selesai</span></td>
               <td class="hidden px-3 py-2 sm:table-cell"><div class="flex justify-end"><a href="#" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Lihat #INV-2035"><i class="ori ori-eye text-lg"></i></a></div></td>
             </tr>
-            <tr class="border-t border-border duration-fast hover:bg-neutral-50">
+            <tr data-row data-outlet="Dago" data-status="Selesai" data-method="QRIS" data-text="#inv-2034 take away" class="border-t border-border duration-fast hover:bg-neutral-50">
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5 font-medium"><a href="#" class="hover:text-primary-700">#INV-2034</a></td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 text-fg-muted sm:table-cell">31 Okt, 12:58</td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 sm:table-cell">Take away</td>
@@ -207,7 +216,7 @@
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-success-50 text-success-700">Selesai</span></td>
               <td class="hidden px-3 py-2 sm:table-cell"><div class="flex justify-end"><a href="#" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Lihat #INV-2034"><i class="ori ori-eye text-lg"></i></a></div></td>
             </tr>
-            <tr class="border-t border-border duration-fast hover:bg-neutral-50">
+            <tr data-row data-outlet="Braga" data-status="Refund" data-method="Tunai" data-text="#inv-2033 meja 09" class="border-t border-border duration-fast hover:bg-neutral-50">
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5 font-medium"><a href="#" class="hover:text-primary-700">#INV-2033</a></td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 text-fg-muted sm:table-cell">31 Okt, 12:44</td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 sm:table-cell">Meja 09</td>
@@ -218,7 +227,7 @@
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-info-50 text-info-700">Refund</span></td>
               <td class="hidden px-3 py-2 sm:table-cell"><div class="flex justify-end"><a href="#" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Lihat #INV-2033"><i class="ori ori-eye text-lg"></i></a></div></td>
             </tr>
-            <tr class="border-t border-border duration-fast hover:bg-neutral-50">
+            <tr data-row data-outlet="Dago" data-status="Selesai" data-method="QRIS" data-text="#inv-2032 meja 01" class="border-t border-border duration-fast hover:bg-neutral-50">
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5 font-medium"><a href="#" class="hover:text-primary-700">#INV-2032</a></td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 text-fg-muted sm:table-cell">31 Okt, 12:30</td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 sm:table-cell">Meja 01</td>
@@ -229,7 +238,7 @@
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-success-50 text-success-700">Selesai</span></td>
               <td class="hidden px-3 py-2 sm:table-cell"><div class="flex justify-end"><a href="#" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Lihat #INV-2032"><i class="ori ori-eye text-lg"></i></a></div></td>
             </tr>
-            <tr class="border-t border-border duration-fast hover:bg-neutral-50">
+            <tr data-row data-outlet="Braga" data-status="Selesai" data-method="Kartu debit" data-text="#inv-2031 take away" class="border-t border-border duration-fast hover:bg-neutral-50">
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5 font-medium"><a href="#" class="hover:text-primary-700">#INV-2031</a></td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 text-fg-muted sm:table-cell">31 Okt, 12:15</td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 sm:table-cell">Take away</td>
@@ -240,7 +249,7 @@
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-success-50 text-success-700">Selesai</span></td>
               <td class="hidden px-3 py-2 sm:table-cell"><div class="flex justify-end"><a href="#" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Lihat #INV-2031"><i class="ori ori-eye text-lg"></i></a></div></td>
             </tr>
-            <tr class="border-t border-border duration-fast hover:bg-neutral-50">
+            <tr data-row data-outlet="Dago" data-status="Selesai" data-method="Tunai" data-text="#inv-2030 meja 03" class="border-t border-border duration-fast hover:bg-neutral-50">
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5 font-medium"><a href="#" class="hover:text-primary-700">#INV-2030</a></td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 text-fg-muted sm:table-cell">31 Okt, 12:02</td>
               <td class="hidden whitespace-nowrap px-4 py-3.5 sm:px-5 sm:table-cell">Meja 03</td>
@@ -251,6 +260,7 @@
               <td class="whitespace-nowrap px-4 py-3.5 sm:px-5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-success-50 text-success-700">Selesai</span></td>
               <td class="hidden px-3 py-2 sm:table-cell"><div class="flex justify-end"><a href="#" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Lihat #INV-2030"><i class="ori ori-eye text-lg"></i></a></div></td>
             </tr>
+            <tr data-empty class="hidden border-t border-border"><td colspan="9" class="px-5 py-12 text-center text-sm text-fg-muted">Tidak ada transaksi yang cocok dengan filter.</td></tr>
           </tbody>
         </table>
       </div>
@@ -268,5 +278,7 @@
 </div>
 
 <script src="../../assets/js/vendor/flowbite.min.js"></script>
+<script src="../../assets/js/demo.js"></script>
+<script src="../../assets/js/transaksi.js"></script>
 </body>
 </html>

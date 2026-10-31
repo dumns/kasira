@@ -18,13 +18,19 @@
     <span class="font-display text-lg font-bold">Kasira</span>
   </div>
   <div class="border-b border-border p-3">
-    <button type="button" class="flex w-full cursor-pointer items-center justify-between gap-3 rounded-control border border-border bg-surface px-3 py-2 text-start hover:bg-neutral-50">
+    <button type="button" id="outlet-toggle" data-dropdown-toggle="outlet-menu" data-dropdown-placement="bottom-start" data-dropdown-offset-distance="6" class="flex w-full cursor-pointer items-center justify-between gap-3 rounded-control border border-border bg-surface px-3 py-2 text-start hover:bg-neutral-50">
       <span class="min-w-0">
         <span class="block truncate text-sm font-semibold">Kopi Senja</span>
-        <span class="block truncate text-xs text-fg-muted">Semua outlet</span>
+        <span data-outlet-label class="block truncate text-xs text-fg-muted">Semua outlet</span>
       </span>
       <i class="ori ori-caret-down text-fg-subtle"></i>
     </button>
+    <div id="outlet-menu" class="z-50 hidden w-56 rounded-card border border-border bg-surface p-2 shadow-none">
+      <button type="button" data-outlet-option="Semua outlet" class="flex w-full cursor-pointer items-center justify-between rounded-control px-3 py-2.5 text-start text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800">Semua outlet</button>
+      <button type="button" data-outlet-option="Dago" class="flex w-full cursor-pointer items-center justify-between rounded-control px-3 py-2.5 text-start text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800">Dago</button>
+      <button type="button" data-outlet-option="Braga" class="flex w-full cursor-pointer items-center justify-between rounded-control px-3 py-2.5 text-start text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800">Braga</button>
+      <button type="button" data-outlet-option="Setiabudi" class="flex w-full cursor-pointer items-center justify-between rounded-control px-3 py-2.5 text-start text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800">Setiabudi</button>
+    </div>
   </div>
   <nav class="flex flex-1 flex-col gap-5 overflow-y-auto scrollbar-none p-3">
       <div class="flex flex-col gap-1">
@@ -55,6 +61,8 @@
       <button type="button" data-drawer-target="sidebar" data-drawer-toggle="sidebar" aria-controls="sidebar" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300 -ms-2 lg:hidden" aria-label="Buka menu"><i class="ori ori-list text-xl"></i></button>
       <span class="font-medium text-fg">Tim & Peran</span>
     </div>
+    <div class="flex shrink-0 items-center gap-2">
+      <a href="../kasir/index.html" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 text-sm bg-primary-600 text-white hover:bg-hover-primary focus-visible:ring-primary-500"><i class="ori ori-shopping-cart text-base"></i>Kasir</a>
     <div class="flex shrink-0 items-center">
       <button type="button" data-dropdown-toggle="user-menu" data-dropdown-placement="bottom-end" data-dropdown-offset-distance="8" class="flex cursor-pointer items-center gap-3 rounded-control py-1.5 ps-1.5 pe-1.5 duration-fast hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 sm:pe-3" aria-label="Menu akun">
         <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-600 text-sm font-semibold text-white">AD</span>
@@ -78,6 +86,7 @@
         <div class="my-1 h-px bg-border"></div>
         <a href="onboarding-kategori.html" class="flex items-center gap-3 rounded-control px-3 py-2.5 text-sm font-medium text-danger-700 duration-fast hover:bg-danger-50"><i class="ori ori-sign-out text-lg"></i>Keluar</a>
       </div>
+    </div>
     </div>
   </header>
   <main class="flex w-full flex-1 flex-col gap-6 p-4 sm:p-6">
@@ -109,7 +118,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="border-t border-border">
+            <tr data-role-row class="border-t border-border">
               <td class="whitespace-nowrap px-5 py-3.5 font-medium">Owner</td>
               <td class="px-5 py-3.5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-primary-50 text-primary-700">L1</span></td>
               <td class="hidden px-5 py-3.5 sm:table-cell"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-neutral-50 text-neutral-700">Bawaan</span></td>
@@ -117,7 +126,7 @@
               <td class="hidden whitespace-nowrap px-5 py-3.5 md:table-cell">Semua outlet</td>
               <td class="px-3 py-2"><div class="flex justify-end"><span class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300 pointer-events-none opacity-50" aria-label="Terkunci"><i class="ori ori-lock text-lg"></i></span></div></td>
             </tr>
-            <tr class="border-t border-border">
+            <tr data-role-row class="border-t border-border">
               <td class="whitespace-nowrap px-5 py-3.5 font-medium">Manager Outlet</td>
               <td class="px-5 py-3.5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-primary-50 text-primary-700">L2</span></td>
               <td class="hidden px-5 py-3.5 sm:table-cell"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-neutral-50 text-neutral-700">Bawaan</span></td>
@@ -125,7 +134,7 @@
               <td class="hidden whitespace-nowrap px-5 py-3.5 md:table-cell">Per outlet</td>
               <td class="px-3 py-2"><div class="flex justify-end"><a href="peran-baru.html" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Ubah Manager Outlet"><i class="ori ori-pencil-simple text-lg"></i></a></div></td>
             </tr>
-            <tr class="border-t border-border">
+            <tr data-role-row class="border-t border-border">
               <td class="whitespace-nowrap px-5 py-3.5 font-medium">Supervisor</td>
               <td class="px-5 py-3.5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-primary-50 text-primary-700">L3</span></td>
               <td class="hidden px-5 py-3.5 sm:table-cell"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-neutral-50 text-neutral-700">Bawaan</span></td>
@@ -133,15 +142,15 @@
               <td class="hidden whitespace-nowrap px-5 py-3.5 md:table-cell">Per outlet</td>
               <td class="px-3 py-2"><div class="flex justify-end"><a href="peran-baru.html" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Ubah Supervisor"><i class="ori ori-pencil-simple text-lg"></i></a></div></td>
             </tr>
-            <tr class="border-t border-border">
+            <tr data-role-row class="border-t border-border">
               <td class="whitespace-nowrap px-5 py-3.5 font-medium">Kepala Dapur</td>
               <td class="px-5 py-3.5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-primary-50 text-primary-700">L3</span></td>
               <td class="hidden px-5 py-3.5 sm:table-cell"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-info-50 text-info-700">Kustom</span></td>
               <td class="px-5 py-3.5 tabular-nums">2</td>
               <td class="hidden whitespace-nowrap px-5 py-3.5 md:table-cell">Per outlet</td>
-              <td class="px-3 py-2"><div class="flex justify-end"><a href="peran-baru.html" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Ubah Kepala Dapur"><i class="ori ori-pencil-simple text-lg"></i></a><button type="button" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-danger-50 hover:text-danger-700 focus-visible:ring-danger-300" aria-label="Hapus Kepala Dapur"><i class="ori ori-trash text-lg"></i></button></div></td>
+              <td class="px-3 py-2"><div class="flex justify-end"><a href="peran-baru.html" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Ubah Kepala Dapur"><i class="ori ori-pencil-simple text-lg"></i></a><button type="button" data-modal-target="hapus-modal" data-modal-toggle="hapus-modal" data-role-delete data-name="Kepala Dapur" data-users="2" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-danger-50 hover:text-danger-700 focus-visible:ring-danger-300" aria-label="Hapus Kepala Dapur"><i class="ori ori-trash text-lg"></i></button></div></td>
             </tr>
-            <tr class="border-t border-border">
+            <tr data-role-row class="border-t border-border">
               <td class="whitespace-nowrap px-5 py-3.5 font-medium">Kasir</td>
               <td class="px-5 py-3.5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-primary-50 text-primary-700">L4</span></td>
               <td class="hidden px-5 py-3.5 sm:table-cell"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-neutral-50 text-neutral-700">Bawaan</span></td>
@@ -149,15 +158,15 @@
               <td class="hidden whitespace-nowrap px-5 py-3.5 md:table-cell">Per outlet</td>
               <td class="px-3 py-2"><div class="flex justify-end"><a href="peran-baru.html" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Ubah Kasir"><i class="ori ori-pencil-simple text-lg"></i></a></div></td>
             </tr>
-            <tr class="border-t border-border">
+            <tr data-role-row class="border-t border-border">
               <td class="whitespace-nowrap px-5 py-3.5 font-medium">Kasir Magang</td>
               <td class="px-5 py-3.5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-primary-50 text-primary-700">L4</span></td>
               <td class="hidden px-5 py-3.5 sm:table-cell"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-info-50 text-info-700">Kustom</span></td>
               <td class="px-5 py-3.5 tabular-nums">3</td>
               <td class="hidden whitespace-nowrap px-5 py-3.5 md:table-cell">Per outlet</td>
-              <td class="px-3 py-2"><div class="flex justify-end"><a href="peran-baru.html" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Ubah Kasir Magang"><i class="ori ori-pencil-simple text-lg"></i></a><button type="button" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-danger-50 hover:text-danger-700 focus-visible:ring-danger-300" aria-label="Hapus Kasir Magang"><i class="ori ori-trash text-lg"></i></button></div></td>
+              <td class="px-3 py-2"><div class="flex justify-end"><a href="peran-baru.html" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300" aria-label="Ubah Kasir Magang"><i class="ori ori-pencil-simple text-lg"></i></a><button type="button" data-modal-target="hapus-modal" data-modal-toggle="hapus-modal" data-role-delete data-name="Kasir Magang" data-users="3" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-danger-50 hover:text-danger-700 focus-visible:ring-danger-300" aria-label="Hapus Kasir Magang"><i class="ori ori-trash text-lg"></i></button></div></td>
             </tr>
-            <tr class="border-t border-border">
+            <tr data-role-row class="border-t border-border">
               <td class="whitespace-nowrap px-5 py-3.5 font-medium">Staf Gudang</td>
               <td class="px-5 py-3.5"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-primary-50 text-primary-700">L4</span></td>
               <td class="hidden px-5 py-3.5 sm:table-cell"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-neutral-50 text-neutral-700">Bawaan</span></td>
@@ -169,9 +178,22 @@
         </table>
       </div>
     </div>
+
+    <div id="hapus-modal" tabindex="-1" aria-hidden="true" class="fixed inset-0 z-50 hidden items-center justify-center overflow-y-auto overflow-x-hidden p-4">
+      <div class="relative w-full max-w-md rounded-card border border-border bg-surface p-6">
+        <h2 class="font-display text-lg font-bold">Hapus peran?</h2>
+        <p class="mt-2 text-sm text-fg-muted">Peran <span data-role-name class="font-semibold text-fg"></span> akan dihapus. <span data-role-users></span></p>
+        <div class="mt-6 flex justify-end gap-2">
+          <button type="button" data-modal-hide="hapus-modal" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 text-sm border border-border bg-surface text-neutral-700 hover:bg-neutral-50 focus-visible:ring-neutral-300">Batal</button>
+          <button type="button" data-modal-hide="hapus-modal" data-confirm-delete class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 text-sm bg-danger-600 text-white hover:bg-hover-danger focus-visible:ring-danger-300">Hapus</button>
+        </div>
+      </div>
+    </div>
   </main>
 </div>
 
 <script src="../../assets/js/vendor/flowbite.min.js"></script>
+<script src="../../assets/js/demo.js"></script>
+<script src="../../assets/js/peran.js"></script>
 </body>
 </html>

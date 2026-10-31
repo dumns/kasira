@@ -18,13 +18,19 @@
     <span class="font-display text-lg font-bold">Kasira</span>
   </div>
   <div class="border-b border-border p-3">
-    <button type="button" class="flex w-full cursor-pointer items-center justify-between gap-3 rounded-control border border-border bg-surface px-3 py-2 text-start hover:bg-neutral-50">
+    <button type="button" id="outlet-toggle" data-dropdown-toggle="outlet-menu" data-dropdown-placement="bottom-start" data-dropdown-offset-distance="6" class="flex w-full cursor-pointer items-center justify-between gap-3 rounded-control border border-border bg-surface px-3 py-2 text-start hover:bg-neutral-50">
       <span class="min-w-0">
         <span class="block truncate text-sm font-semibold">Kopi Senja</span>
-        <span class="block truncate text-xs text-fg-muted">Semua outlet</span>
+        <span data-outlet-label class="block truncate text-xs text-fg-muted">Semua outlet</span>
       </span>
       <i class="ori ori-caret-down text-fg-subtle"></i>
     </button>
+    <div id="outlet-menu" class="z-50 hidden w-56 rounded-card border border-border bg-surface p-2 shadow-none">
+      <button type="button" data-outlet-option="Semua outlet" class="flex w-full cursor-pointer items-center justify-between rounded-control px-3 py-2.5 text-start text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800">Semua outlet</button>
+      <button type="button" data-outlet-option="Dago" class="flex w-full cursor-pointer items-center justify-between rounded-control px-3 py-2.5 text-start text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800">Dago</button>
+      <button type="button" data-outlet-option="Braga" class="flex w-full cursor-pointer items-center justify-between rounded-control px-3 py-2.5 text-start text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800">Braga</button>
+      <button type="button" data-outlet-option="Setiabudi" class="flex w-full cursor-pointer items-center justify-between rounded-control px-3 py-2.5 text-start text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800">Setiabudi</button>
+    </div>
   </div>
   <nav class="flex flex-1 flex-col gap-5 overflow-y-auto scrollbar-none p-3">
       <div class="flex flex-col gap-1">
@@ -55,6 +61,8 @@
       <button type="button" data-drawer-target="sidebar" data-drawer-toggle="sidebar" aria-controls="sidebar" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300 -ms-2 lg:hidden" aria-label="Buka menu"><i class="ori ori-list text-xl"></i></button>
       <a href="peran.html" class="text-fg-muted hover:text-fg">Tim & Peran</a><i class="ori ori-caret-right text-fg-subtle"></i><span class="font-medium text-fg">Buat peran</span>
     </div>
+    <div class="flex shrink-0 items-center gap-2">
+      <a href="../kasir/index.html" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 text-sm bg-primary-600 text-white hover:bg-hover-primary focus-visible:ring-primary-500"><i class="ori ori-shopping-cart text-base"></i>Kasir</a>
     <div class="flex shrink-0 items-center">
       <button type="button" data-dropdown-toggle="user-menu" data-dropdown-placement="bottom-end" data-dropdown-offset-distance="8" class="flex cursor-pointer items-center gap-3 rounded-control py-1.5 ps-1.5 pe-1.5 duration-fast hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 sm:pe-3" aria-label="Menu akun">
         <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-600 text-sm font-semibold text-white">AD</span>
@@ -79,6 +87,7 @@
         <a href="onboarding-kategori.html" class="flex items-center gap-3 rounded-control px-3 py-2.5 text-sm font-medium text-danger-700 duration-fast hover:bg-danger-50"><i class="ori ori-sign-out text-lg"></i>Keluar</a>
       </div>
     </div>
+    </div>
   </header>
   <main class="flex w-full flex-1 flex-col gap-6 p-4 sm:p-6">
     <div class="flex flex-wrap items-start justify-between gap-4">
@@ -89,19 +98,21 @@
 
     </div>
 
-    <form class="grid items-start gap-4 lg:grid-cols-3" action="peran.html">
+    <form id="peran-form" novalidate class="grid items-start gap-4 lg:grid-cols-3" action="peran.html">
       <div class="rounded-card border border-border/70 bg-surface flex flex-col gap-5 p-6 lg:sticky lg:top-24">
         <div>
           <label for="nama" class="mb-1.5 block text-sm font-medium">Nama peran</label>
           <input id="nama" type="text" class="h-10 w-full rounded-control border border-border bg-surface px-3.5 text-sm text-fg placeholder:text-fg-subtle focus:border-primary-400 focus:outline-none focus:ring-4 focus:ring-primary-500/10" placeholder="Contoh: Kepala Dapur" value="Kepala Dapur" />
+          <p id="nama-error" class="mt-1.5 hidden text-xs text-danger-700">Nama peran wajib diisi.</p>
         </div>
         <div>
           <label for="level" class="mb-1.5 block text-sm font-medium">Level</label>
           <select id="level" class="h-10 w-full rounded-control border border-border bg-surface px-3.5 text-sm text-fg placeholder:text-fg-subtle focus:border-primary-400 focus:outline-none focus:ring-4 focus:ring-primary-500/10">
-            <option>L2 - setara Manager Outlet</option>
-            <option selected>L3 - setara Supervisor</option>
-            <option>L4 - setara Kasir</option>
+            <option value="2">L2 - setara Manager Outlet</option>
+            <option value="3" selected>L3 - setara Supervisor</option>
+            <option value="4">L4 - setara Kasir</option>
           </select>
+          <p id="level-hint" class="mt-1.5 text-xs text-fg-muted"></p>
         </div>
         <fieldset>
           <legend class="mb-2 block text-sm font-medium">Cakupan</legend>
@@ -119,7 +130,10 @@
       <div class="flex flex-col gap-4 lg:col-span-2">
         <fieldset class="rounded-card border border-border/70 bg-surface p-6">
           <legend class="sr-only">Transaksi</legend>
-          <h3 class="font-display text-base font-bold">Transaksi</h3>
+          <div class="flex items-center justify-between gap-3">
+            <h3 class="font-display text-base font-bold">Transaksi</h3>
+            <button type="button" data-select-all class="cursor-pointer text-xs font-semibold text-primary-700 hover:underline">Pilih semua</button>
+          </div>
           <div class="mt-4 grid gap-3 sm:grid-cols-2">
             <label class="flex cursor-pointer items-center gap-3 text-sm">
               <input type="checkbox" class="h-4 w-4 cursor-pointer rounded-check border-border text-primary-600 focus:ring-primary-500" checked />Membuat transaksi
@@ -137,7 +151,10 @@
         </fieldset>
         <fieldset class="rounded-card border border-border/70 bg-surface p-6">
           <legend class="sr-only">Katalog</legend>
-          <h3 class="font-display text-base font-bold">Katalog</h3>
+          <div class="flex items-center justify-between gap-3">
+            <h3 class="font-display text-base font-bold">Katalog</h3>
+            <button type="button" data-select-all class="cursor-pointer text-xs font-semibold text-primary-700 hover:underline">Pilih semua</button>
+          </div>
           <div class="mt-4 grid gap-3 sm:grid-cols-2">
             <label class="flex cursor-pointer items-center gap-3 text-sm">
               <input type="checkbox" class="h-4 w-4 cursor-pointer rounded-check border-border text-primary-600 focus:ring-primary-500" checked />Lihat katalog
@@ -152,7 +169,10 @@
         </fieldset>
         <fieldset class="rounded-card border border-border/70 bg-surface p-6">
           <legend class="sr-only">Stok</legend>
-          <h3 class="font-display text-base font-bold">Stok</h3>
+          <div class="flex items-center justify-between gap-3">
+            <h3 class="font-display text-base font-bold">Stok</h3>
+            <button type="button" data-select-all class="cursor-pointer text-xs font-semibold text-primary-700 hover:underline">Pilih semua</button>
+          </div>
           <div class="mt-4 grid gap-3 sm:grid-cols-2">
             <label class="flex cursor-pointer items-center gap-3 text-sm">
               <input type="checkbox" class="h-4 w-4 cursor-pointer rounded-check border-border text-primary-600 focus:ring-primary-500" checked />Lihat stok
@@ -167,7 +187,10 @@
         </fieldset>
         <fieldset class="rounded-card border border-border/70 bg-surface p-6">
           <legend class="sr-only">Laporan</legend>
-          <h3 class="font-display text-base font-bold">Laporan</h3>
+          <div class="flex items-center justify-between gap-3">
+            <h3 class="font-display text-base font-bold">Laporan</h3>
+            <button type="button" data-select-all class="cursor-pointer text-xs font-semibold text-primary-700 hover:underline">Pilih semua</button>
+          </div>
           <div class="mt-4 grid gap-3 sm:grid-cols-2">
             <label class="flex cursor-pointer items-center gap-3 text-sm">
               <input type="checkbox" class="h-4 w-4 cursor-pointer rounded-check border-border text-primary-600 focus:ring-primary-500" />Laporan penjualan
@@ -182,7 +205,10 @@
         </fieldset>
         <fieldset class="rounded-card border border-border/70 bg-surface p-6">
           <legend class="sr-only">Pelanggan</legend>
-          <h3 class="font-display text-base font-bold">Pelanggan</h3>
+          <div class="flex items-center justify-between gap-3">
+            <h3 class="font-display text-base font-bold">Pelanggan</h3>
+            <button type="button" data-select-all class="cursor-pointer text-xs font-semibold text-primary-700 hover:underline">Pilih semua</button>
+          </div>
           <div class="mt-4 grid gap-3 sm:grid-cols-2">
             <label class="flex cursor-pointer items-center gap-3 text-sm">
               <input type="checkbox" class="h-4 w-4 cursor-pointer rounded-check border-border text-primary-600 focus:ring-primary-500" checked />Lihat pelanggan
@@ -194,7 +220,10 @@
         </fieldset>
         <fieldset class="rounded-card border border-border/70 bg-surface p-6">
           <legend class="sr-only">Tim</legend>
-          <h3 class="font-display text-base font-bold">Tim</h3>
+          <div class="flex items-center justify-between gap-3">
+            <h3 class="font-display text-base font-bold">Tim</h3>
+            <button type="button" data-select-all class="cursor-pointer text-xs font-semibold text-primary-700 hover:underline">Pilih semua</button>
+          </div>
           <div class="mt-4 grid gap-3 sm:grid-cols-2">
             <label class="flex cursor-pointer items-center gap-3 text-sm">
               <input type="checkbox" class="h-4 w-4 cursor-pointer rounded-check border-border text-primary-600 focus:ring-primary-500" />Lihat pengguna level bawah
@@ -210,5 +239,7 @@
 </div>
 
 <script src="../../assets/js/vendor/flowbite.min.js"></script>
+<script src="../../assets/js/demo.js"></script>
+<script src="../../assets/js/peran-baru.js"></script>
 </body>
 </html>

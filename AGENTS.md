@@ -11,7 +11,7 @@ Konteks produk ada di `docs/brainstorming/kategori.md`, `docs/brainstorming/role
 3. **Setiap perubahan dicatat di `templates/CHANGELOG.md`** pada tanggal hari itu, di commit yang sama.
 4. **Mulai dari POV eksternal tertinggi (Owner)**, lalu turun ke Manager, Kasir, dan seterusnya. Role dan level mengikuti `docs/brainstorming/role.md`: Owner boleh membuat role kustom; role selevel tidak bisa saling akses, hanya level di atasnya.
 5. **Satu halaman = satu file HTML.** Dilarang satu file multi-view yang berpindah lewat JS. Konten statis ditulis sebagai HTML.
-6. **Tanpa logika aplikasi** dan tanpa panggilan API sungguhan. Data contoh ditulis langsung di HTML.
+6. **Interaktif hanya untuk demo.** Perilaku (tambah item, filter, modal, validasi, toast) ditulis di `assets/js/<halaman>.js` dengan data di memori halaman; markup tetap ada di HTML (pakai `<template>` untuk baris yang dibuat JS). Tanpa panggilan API, tanpa penyimpanan permanen, dan JS tidak boleh membuat gaya atau komponen baru. Helper bersama (rupiah, toast) ada di `assets/js/demo.js`.
 7. **Nama produk `Kasira` adalah placeholder.** Jangan menyebut Ordinara atau pustaka lain di teks UI.
 
 ## Struktur
@@ -20,6 +20,7 @@ Konteks produk ada di `docs/brainstorming/kategori.md`, `docs/brainstorming/role
 templates/<role>/       halaman per sudut pandang (owner/, manager/, kasir/, ...)
 templates/CHANGELOG.md  riwayat mockup (tanggal)
 src/input.css           entry Tailwind: mengimpor styles, font, dan ikon Ordinara
+assets/js/*.js          skrip demo per halaman dan helper bersama (demo.js)
 assets/js/vendor/       hasil salinan Flowbite (di-gitignore, dibuat saat build)
 dist/                   hasil build (di-gitignore)
 scripts/copy-vendor.mjs menyalin Flowbite dan font ke assets/ dan dist/

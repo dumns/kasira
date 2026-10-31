@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<base href="/templates/kasir/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kasir | Kasira</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="data:," />
+<meta name="theme-color" content="#2361e7" />
+<link rel="stylesheet" href="../../dist/output.css" />
+</head>
+<body class="flex h-screen flex-col overflow-hidden bg-background font-sans text-fg antialiased">
+
+<header class="z-30 flex h-16 shrink-0 items-center justify-between gap-3 border-b border-border bg-surface px-4 sm:px-6">
+  <div class="flex min-w-0 items-center gap-3">
+    <a href="../owner/index.html" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300 -ms-2" aria-label="Kembali ke dashboard"><i class="ori ori-arrow-left text-xl"></i></a>
+    <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-control bg-primary-600 text-white"><i class="ori ori-storefront text-lg"></i></span>
+    <div class="min-w-0">
+      <p class="truncate text-sm font-semibold leading-tight">Kasir</p>
+      <p class="truncate text-xs text-fg-muted">Dago, shift pagi</p>
+    </div>
+  </div>
+  <div class="flex shrink-0 items-center gap-2">
+    <button type="button" data-drawer-target="cart" data-drawer-toggle="cart" data-drawer-placement="right" aria-controls="cart" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 text-sm border border-border bg-surface text-neutral-700 hover:bg-neutral-50 focus-visible:ring-neutral-300 lg:hidden"><i class="ori ori-shopping-cart text-base"></i><span><span data-cart-count>4</span> item</span></button>
+    <div class="flex shrink-0 items-center">
+      <button type="button" data-dropdown-toggle="user-menu" data-dropdown-placement="bottom-end" data-dropdown-offset-distance="8" class="flex cursor-pointer items-center gap-3 rounded-control py-1.5 ps-1.5 pe-1.5 duration-fast hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 sm:pe-3" aria-label="Menu akun">
+        <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-600 text-sm font-semibold text-white">AD</span>
+        <span class="hidden min-w-0 text-start sm:block">
+          <span class="block text-sm font-semibold leading-tight">Ahmad Dimas</span>
+          <span class="block text-xs text-fg-muted">Owner</span>
+        </span>
+        <span class="hidden text-fg-subtle sm:inline-flex"><i class="ori ori-caret-down"></i></span>
+      </button>
+      <div id="user-menu" class="z-50 hidden w-64 rounded-card border border-border bg-surface p-2 shadow-none">
+        <div class="flex items-center gap-3 px-3 py-3">
+          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-600 text-sm font-semibold text-white">AD</span>
+          <span class="min-w-0">
+            <span class="block truncate text-sm font-semibold">Ahmad Dimas</span>
+            <span class="block truncate text-xs text-fg-muted">ahmad@kopisenja.id</span>
+          </span>
+        </div>
+        <div class="my-1 h-px bg-border"></div>
+        <a href="#" class="flex items-center gap-3 rounded-control px-3 py-2.5 text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800"><i class="ori ori-user-circle text-lg"></i>Profil saya</a>
+        <a href="#" class="flex items-center gap-3 rounded-control px-3 py-2.5 text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800"><i class="ori ori-gear text-lg"></i>Pengaturan akun</a>
+        <div class="my-1 h-px bg-border"></div>
+        <a href="../owner/onboarding-kategori.html" class="flex items-center gap-3 rounded-control px-3 py-2.5 text-sm font-medium text-danger-700 duration-fast hover:bg-danger-50"><i class="ori ori-sign-out text-lg"></i>Keluar</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="flex min-h-0 flex-1">
+  <main class="flex min-w-0 flex-1 flex-col gap-4 overflow-y-auto p-4 sm:p-6">
+    <div class="relative shrink-0">
+      <i class="ori ori-magnifying-glass pointer-events-none absolute start-3.5 top-1/2 -translate-y-1/2 text-lg text-fg-subtle"></i>
+      <input id="menu-search" type="search" class="h-10 w-full rounded-control border border-border bg-surface px-3.5 text-sm text-fg placeholder:text-fg-subtle focus:border-primary-400 focus:outline-none focus:ring-4 focus:ring-primary-500/10 ps-10" placeholder="Cari menu" aria-label="Cari menu" />
+    </div>
+    <div id="cat-pills" class="flex shrink-0 gap-2 overflow-x-auto scrollbar-none">
+      <button type="button" data-cat="Semua" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 shrink-0 px-4 text-sm bg-primary-600 text-white focus-visible:ring-primary-500">Semua</button>
+      <button type="button" data-cat="Kopi" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 shrink-0 px-4 text-sm border border-border bg-surface text-neutral-700 hover:bg-neutral-50 focus-visible:ring-neutral-300">Kopi</button>
+      <button type="button" data-cat="Non-kopi" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 shrink-0 px-4 text-sm border border-border bg-surface text-neutral-700 hover:bg-neutral-50 focus-visible:ring-neutral-300">Non-kopi</button>
+      <button type="button" data-cat="Makanan" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 shrink-0 px-4 text-sm border border-border bg-surface text-neutral-700 hover:bg-neutral-50 focus-visible:ring-neutral-300">Makanan</button>
+      <button type="button" data-cat="Camilan" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 shrink-0 px-4 text-sm border border-border bg-surface text-neutral-700 hover:bg-neutral-50 focus-visible:ring-neutral-300">Camilan</button>
+    </div>
+    <div id="menu-grid" class="grid shrink-0 grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-4">
+      <button type="button" data-item data-name="Kopi Susu" data-cat="Kopi" data-price="24000" data-qty="2" class="relative flex cursor-pointer flex-col items-start rounded-card border p-4 text-start duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 border-primary-600 bg-primary-50">
+        <span class="text-sm font-semibold">Kopi Susu</span>
+        <span class="mt-0.5 text-xs text-fg-muted">Kopi</span>
+        <span class="mt-4 text-sm font-semibold tabular-nums">Rp 24.000</span>
+        <span data-badge class="absolute end-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-primary-600 px-1.5 text-xs font-semibold text-white">2</span>
+      </button>
+      <button type="button" data-item data-name="Americano" data-cat="Kopi" data-price="20000" data-qty="0" class="relative flex cursor-pointer flex-col items-start rounded-card border p-4 text-start duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 border-border/70 bg-surface hover:border-primary-300">
+        <span class="text-sm font-semibold">Americano</span>
+        <span class="mt-0.5 text-xs text-fg-muted">Kopi</span>
+        <span class="mt-4 text-sm font-semibold tabular-nums">Rp 20.000</span>
+        <span data-badge class="absolute end-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-primary-600 px-1.5 text-xs font-semibold text-white" style="display:none">0</span>
+      </button>
+      <button type="button" data-item data-name="Latte" data-cat="Kopi" data-price="28000" data-qty="0" class="relative flex cursor-pointer flex-col items-start rounded-card border p-4 text-start duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 border-border/70 bg-surface hover:border-primary-300">
+        <span class="text-sm font-semibold">Latte</span>
+        <span class="mt-0.5 text-xs text-fg-muted">Kopi</span>
+        <span class="mt-4 text-sm font-semibold tabular-nums">Rp 28.000</span>
+        <span data-badge class="absolute end-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-primary-600 px-1.5 text-xs font-semibold text-white" style="display:none">0</span>
+      </button>
+      <button type="button" data-item data-name="Cappuccino" data-cat="Kopi" data-price="28000" data-qty="0" class="relative flex cursor-pointer flex-col items-start rounded-card border p-4 text-start duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 border-border/70 bg-surface hover:border-primary-300">
+        <span class="text-sm font-semibold">Cappuccino</span>
+        <span class="mt-0.5 text-xs text-fg-muted">Kopi</span>
+        <span class="mt-4 text-sm font-semibold tabular-nums">Rp 28.000</span>
+        <span data-badge class="absolute end-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-primary-600 px-1.5 text-xs font-semibold text-white" style="display:none">0</span>
+      </button>
+      <button type="button" data-item data-name="Es Teh Manis" data-cat="Non-kopi" data-price="12000" data-qty="1" class="relative flex cursor-pointer flex-col items-start rounded-card border p-4 text-start duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 border-primary-600 bg-primary-50">
+        <span class="text-sm font-semibold">Es Teh Manis</span>
+        <span class="mt-0.5 text-xs text-fg-muted">Non-kopi</span>
+        <span class="mt-4 text-sm font-semibold tabular-nums">Rp 12.000</span>
+        <span data-badge class="absolute end-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-primary-600 px-1.5 text-xs font-semibold text-white">1</span>
+      </button>
+      <button type="button" data-item data-name="Es Jeruk" data-cat="Non-kopi" data-price="15000" data-qty="0" class="relative flex cursor-pointer flex-col items-start rounded-card border p-4 text-start duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 border-border/70 bg-surface hover:border-primary-300">
+        <span class="text-sm font-semibold">Es Jeruk</span>
+        <span class="mt-0.5 text-xs text-fg-muted">Non-kopi</span>
+        <span class="mt-4 text-sm font-semibold tabular-nums">Rp 15.000</span>
+        <span data-badge class="absolute end-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-primary-600 px-1.5 text-xs font-semibold text-white" style="display:none">0</span>
+      </button>
+      <button type="button" data-item data-name="Matcha Latte" data-cat="Non-kopi" data-price="30000" data-qty="0" class="relative flex cursor-pointer flex-col items-start rounded-card border p-4 text-start duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 border-border/70 bg-surface hover:border-primary-300">
+        <span class="text-sm font-semibold">Matcha Latte</span>
+        <span class="mt-0.5 text-xs text-fg-muted">Non-kopi</span>
+        <span class="mt-4 text-sm font-semibold tabular-nums">Rp 30.000</span>
+        <span data-badge class="absolute end-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-primary-600 px-1.5 text-xs font-semibold text-white" style="display:none">0</span>
+      </button>
+      <button type="button" data-item data-name="Nasi Goreng" data-cat="Makanan" data-price="32000" data-qty="1" class="relative flex cursor-pointer flex-col items-start rounded-card border p-4 text-start duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 border-primary-600 bg-primary-50">
+        <span class="text-sm font-semibold">Nasi Goreng</span>
+        <span class="mt-0.5 text-xs text-fg-muted">Makanan</span>
+        <span class="mt-4 text-sm font-semibold tabular-nums">Rp 32.000</span>
+        <span data-badge class="absolute end-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-primary-600 px-1.5 text-xs font-semibold text-white">1</span>
+      </button>
+      <button type="button" data-item data-name="Mie Goreng" data-cat="Makanan" data-price="30000" data-qty="0" class="relative flex cursor-pointer flex-col items-start rounded-card border p-4 text-start duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 border-border/70 bg-surface hover:border-primary-300">
+        <span class="text-sm font-semibold">Mie Goreng</span>
+        <span class="mt-0.5 text-xs text-fg-muted">Makanan</span>
+        <span class="mt-4 text-sm font-semibold tabular-nums">Rp 30.000</span>
+        <span data-badge class="absolute end-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-primary-600 px-1.5 text-xs font-semibold text-white" style="display:none">0</span>
+      </button>
+      <button type="button" data-item data-name="Roti Bakar" data-cat="Camilan" data-price="22000" data-qty="0" class="relative flex cursor-pointer flex-col items-start rounded-card border p-4 text-start duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 border-border/70 bg-surface hover:border-primary-300">
+        <span class="text-sm font-semibold">Roti Bakar</span>
+        <span class="mt-0.5 text-xs text-fg-muted">Camilan</span>
+        <span class="mt-4 text-sm font-semibold tabular-nums">Rp 22.000</span>
+        <span data-badge class="absolute end-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-primary-600 px-1.5 text-xs font-semibold text-white" style="display:none">0</span>
+      </button>
+      <button type="button" data-item data-name="Kentang Goreng" data-cat="Camilan" data-price="20000" data-qty="0" class="relative flex cursor-pointer flex-col items-start rounded-card border p-4 text-start duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 border-border/70 bg-surface hover:border-primary-300">
+        <span class="text-sm font-semibold">Kentang Goreng</span>
+        <span class="mt-0.5 text-xs text-fg-muted">Camilan</span>
+        <span class="mt-4 text-sm font-semibold tabular-nums">Rp 20.000</span>
+        <span data-badge class="absolute end-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-primary-600 px-1.5 text-xs font-semibold text-white" style="display:none">0</span>
+      </button>
+      <button type="button" data-item data-name="Croissant" data-cat="Camilan" data-price="25000" data-qty="0" class="relative flex cursor-pointer flex-col items-start rounded-card border p-4 text-start duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 border-border/70 bg-surface hover:border-primary-300">
+        <span class="text-sm font-semibold">Croissant</span>
+        <span class="mt-0.5 text-xs text-fg-muted">Camilan</span>
+        <span class="mt-4 text-sm font-semibold tabular-nums">Rp 25.000</span>
+        <span data-badge class="absolute end-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-primary-600 px-1.5 text-xs font-semibold text-white" style="display:none">0</span>
+      </button>
+    </div>
+    <p id="menu-empty" class="py-12 text-center text-sm text-fg-muted" style="display:none">Menu tidak ditemukan.</p>
+  </main>
+
+  <aside id="cart" class="fixed inset-y-0 end-0 z-40 flex w-full max-w-sm translate-x-full flex-col border-s border-border bg-surface transition-transform lg:static lg:z-auto lg:w-96 lg:max-w-none lg:shrink-0 lg:translate-x-0" aria-label="Pesanan">
+    <div class="flex h-16 shrink-0 items-center justify-between gap-3 border-b border-border px-5">
+      <div>
+        <h2 class="font-display text-lg font-bold leading-tight">Pesanan</h2>
+        <p data-order-no class="text-xs text-fg-muted">#INV-2042</p>
+      </div>
+      <button type="button" data-drawer-hide="cart" aria-controls="cart" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300 lg:hidden" aria-label="Tutup"><i class="ori ori-x text-lg"></i></button>
+    </div>
+
+    <div class="flex flex-col gap-3 border-b border-border p-5">
+      <fieldset>
+        <legend class="sr-only">Tipe pesanan</legend>
+        <div class="grid grid-cols-2 gap-2">
+          <label class="flex cursor-pointer items-center justify-center gap-2 rounded-control border border-border bg-surface px-3 py-2.5 text-sm font-medium text-neutral-700 duration-fast hover:bg-neutral-50 has-checked:border-primary-600 has-checked:bg-primary-50 has-checked:text-primary-700 has-focus-visible:ring-2 has-focus-visible:ring-primary-500">
+            <input type="radio" name="tipe" value="dine-in" class="sr-only" checked />Dine-in
+          </label>
+          <label class="flex cursor-pointer items-center justify-center gap-2 rounded-control border border-border bg-surface px-3 py-2.5 text-sm font-medium text-neutral-700 duration-fast hover:bg-neutral-50 has-checked:border-primary-600 has-checked:bg-primary-50 has-checked:text-primary-700 has-focus-visible:ring-2 has-focus-visible:ring-primary-500">
+            <input type="radio" name="tipe" value="take-away" class="sr-only" />Take away
+          </label>
+        </div>
+      </fieldset>
+      <select id="meja" class="h-10 w-full rounded-control border border-border bg-surface px-3.5 text-sm text-fg placeholder:text-fg-subtle focus:border-primary-400 focus:outline-none focus:ring-4 focus:ring-primary-500/10 disabled:opacity-50" aria-label="Meja"><option>Meja 04</option><option>Meja 01</option><option>Meja 02</option><option>Meja 03</option></select>
+    </div>
+
+    <ul id="cart-lines" class="flex-1 divide-y divide-border overflow-y-auto scrollbar-none p-5"></ul>
+    <div id="cart-empty" class="flex flex-1 flex-col items-center justify-center gap-2 p-5 text-center" style="display:none">
+      <span class="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-100 text-fg-subtle"><i class="ori ori-shopping-cart text-2xl"></i></span>
+      <p class="text-sm font-semibold">Belum ada pesanan</p>
+      <p class="text-xs text-fg-muted">Pilih menu untuk mulai.</p>
+    </div>
+
+    <div class="flex flex-col gap-4 border-t border-border p-5">
+      <input type="text" class="h-10 w-full rounded-control border border-border bg-surface px-3.5 text-sm text-fg placeholder:text-fg-subtle focus:border-primary-400 focus:outline-none focus:ring-4 focus:ring-primary-500/10" placeholder="Catatan pesanan" aria-label="Catatan pesanan" />
+      <dl class="flex flex-col gap-2 text-sm">
+        <div class="flex items-center justify-between"><dt class="text-fg-muted">Subtotal</dt><dd data-subtotal class="tabular-nums">Rp 0</dd></div>
+        <div class="flex items-center justify-between"><dt class="text-fg-muted">Pajak 10%</dt><dd data-tax class="tabular-nums">Rp 0</dd></div>
+        <div class="flex items-center justify-between border-t border-border pt-3 text-base font-semibold"><dt>Total</dt><dd data-total class="tabular-nums">Rp 0</dd></div>
+      </dl>
+      <div class="grid grid-cols-3 gap-2">
+        <button type="button" data-save class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 text-sm border border-border bg-surface text-neutral-700 hover:bg-neutral-50 focus-visible:ring-neutral-300 h-12">Simpan</button>
+        <button type="button" id="btn-pay" data-modal-target="pay-modal" data-modal-toggle="pay-modal" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 text-sm bg-primary-600 text-white hover:bg-hover-primary focus-visible:ring-primary-500 col-span-2 h-12 text-btn-lg">Bayar</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<template id="cart-line">
+  <li class="flex items-center gap-3 py-4 first:pt-0">
+    <div class="min-w-0 flex-1">
+      <p data-line-name class="truncate text-sm font-semibold"></p>
+      <p data-line-price class="text-xs text-fg-muted tabular-nums"></p>
+    </div>
+    <div class="flex items-center gap-2">
+      <button type="button" data-dec class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-8 w-8 border border-border bg-surface text-neutral-700 hover:bg-neutral-50 focus-visible:ring-neutral-300" aria-label="Kurangi"><i class="ori ori-minus"></i></button>
+      <span data-line-qty class="w-5 text-center text-sm font-semibold tabular-nums"></span>
+      <button type="button" data-inc class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-8 w-8 border border-border bg-surface text-neutral-700 hover:bg-neutral-50 focus-visible:ring-neutral-300" aria-label="Tambah"><i class="ori ori-plus"></i></button>
+    </div>
+    <p data-line-total class="w-24 text-end text-sm font-semibold tabular-nums"></p>
+  </li>
+</template>
+
+<div id="pay-modal" tabindex="-1" aria-hidden="true" class="fixed inset-0 z-50 hidden items-center justify-center overflow-y-auto overflow-x-hidden p-4">
+  <div class="relative w-full max-w-md rounded-card border border-border bg-surface">
+    <div data-pay-step="form">
+      <div class="flex items-center justify-between border-b border-border px-6 py-4">
+        <h2 class="font-display text-lg font-bold">Pembayaran</h2>
+        <button type="button" data-modal-hide="pay-modal" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300 -me-2" aria-label="Tutup"><i class="ori ori-x text-lg"></i></button>
+      </div>
+      <div class="flex flex-col gap-5 p-6">
+        <div class="text-center">
+          <p class="text-xs text-fg-muted">Total tagihan</p>
+          <p data-pay-total class="mt-1 font-display text-3xl font-bold tabular-nums">Rp 0</p>
+        </div>
+        <fieldset>
+          <legend class="sr-only">Metode pembayaran</legend>
+          <div class="grid grid-cols-2 gap-2">
+          <label class="flex cursor-pointer items-center justify-center gap-2 rounded-control border border-border bg-surface px-3 py-2.5 text-sm font-medium text-neutral-700 duration-fast hover:bg-neutral-50 has-checked:border-primary-600 has-checked:bg-primary-50 has-checked:text-primary-700 has-focus-visible:ring-2 has-focus-visible:ring-primary-500">
+            <input type="radio" name="metode" value="Tunai" class="sr-only" checked /><i class="ori ori-wallet text-base"></i>Tunai
+          </label>
+          <label class="flex cursor-pointer items-center justify-center gap-2 rounded-control border border-border bg-surface px-3 py-2.5 text-sm font-medium text-neutral-700 duration-fast hover:bg-neutral-50 has-checked:border-primary-600 has-checked:bg-primary-50 has-checked:text-primary-700 has-focus-visible:ring-2 has-focus-visible:ring-primary-500">
+            <input type="radio" name="metode" value="QRIS" class="sr-only" /><i class="ori ori-qr-code text-base"></i>QRIS
+          </label>
+          <label class="flex cursor-pointer items-center justify-center gap-2 rounded-control border border-border bg-surface px-3 py-2.5 text-sm font-medium text-neutral-700 duration-fast hover:bg-neutral-50 has-checked:border-primary-600 has-checked:bg-primary-50 has-checked:text-primary-700 has-focus-visible:ring-2 has-focus-visible:ring-primary-500">
+            <input type="radio" name="metode" value="Kartu" class="sr-only" /><i class="ori ori-credit-card text-base"></i>Kartu
+          </label>
+          <label class="flex cursor-pointer items-center justify-center gap-2 rounded-control border border-border bg-surface px-3 py-2.5 text-sm font-medium text-neutral-700 duration-fast hover:bg-neutral-50 has-checked:border-primary-600 has-checked:bg-primary-50 has-checked:text-primary-700 has-focus-visible:ring-2 has-focus-visible:ring-primary-500">
+            <input type="radio" name="metode" value="Transfer" class="sr-only" /><i class="ori ori-arrows-left-right text-base"></i>Transfer
+          </label>
+          </div>
+        </fieldset>
+
+        <div data-pay-panel="Tunai" class="flex flex-col gap-3">
+          <div>
+            <label for="uang" class="mb-1.5 block text-sm font-medium">Uang diterima</label>
+            <input id="uang" type="text" inputmode="numeric" autocomplete="off" class="h-10 w-full rounded-control border border-border bg-surface px-3.5 text-sm text-fg placeholder:text-fg-subtle focus:border-primary-400 focus:outline-none focus:ring-4 focus:ring-primary-500/10" placeholder="0" />
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" data-amount="exact" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-8 px-3 text-xs border border-border bg-surface text-neutral-700 hover:bg-neutral-50 focus-visible:ring-neutral-300">Uang pas</button>
+            <button type="button" data-amount="50000" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-8 px-3 text-xs border border-border bg-surface text-neutral-700 hover:bg-neutral-50 focus-visible:ring-neutral-300">50.000</button>
+            <button type="button" data-amount="100000" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-8 px-3 text-xs border border-border bg-surface text-neutral-700 hover:bg-neutral-50 focus-visible:ring-neutral-300">100.000</button>
+            <button type="button" data-amount="200000" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-8 px-3 text-xs border border-border bg-surface text-neutral-700 hover:bg-neutral-50 focus-visible:ring-neutral-300">200.000</button>
+          </div>
+          <div class="flex items-center justify-between rounded-control bg-neutral-50 px-4 py-3 text-sm">
+            <span class="text-fg-muted">Kembalian</span>
+            <span data-change class="font-semibold tabular-nums">Rp 0</span>
+          </div>
+        </div>
+        <div data-pay-panel="QRIS" class="flex flex-col items-center gap-3 text-center" style="display:none">
+          <span class="flex h-36 w-36 items-center justify-center rounded-card border border-border bg-neutral-50 text-neutral-400"><i class="ori ori-qr-code text-7xl"></i></span>
+          <p class="text-sm text-fg-muted">Pindai kode QR dengan aplikasi pembayaran pelanggan.</p>
+        </div>
+        <div data-pay-panel="Kartu" class="flex flex-col items-center gap-3 py-4 text-center" style="display:none">
+          <span class="flex h-14 w-14 items-center justify-center rounded-full bg-neutral-100 text-neutral-500"><i class="ori ori-credit-card text-3xl"></i></span>
+          <p class="text-sm text-fg-muted">Gesek atau tempel kartu pada mesin EDC.</p>
+        </div>
+        <div data-pay-panel="Transfer" class="flex flex-col gap-2 rounded-control bg-neutral-50 p-4 text-sm" style="display:none">
+          <p class="text-fg-muted">Transfer ke rekening</p>
+          <p class="font-semibold">BCA 123 456 7890</p>
+          <p class="text-fg-muted">a.n. Kopi Senja</p>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2 border-t border-border px-6 py-4">
+        <button type="button" data-modal-hide="pay-modal" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 text-sm border border-border bg-surface text-neutral-700 hover:bg-neutral-50 focus-visible:ring-neutral-300">Batal</button>
+        <button type="button" id="pay-confirm" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 text-sm bg-primary-600 text-white hover:bg-hover-primary focus-visible:ring-primary-500">Konfirmasi</button>
+      </div>
+    </div>
+
+    <div data-pay-step="done" class="flex flex-col items-center gap-5 p-8 text-center" style="display:none">
+      <span class="flex h-14 w-14 items-center justify-center rounded-full bg-success-50 text-success-700"><i class="ori ori-check-circle text-3xl"></i></span>
+      <div>
+        <h2 class="font-display text-xl font-bold">Pembayaran berhasil</h2>
+        <p data-done-no class="mt-1 text-sm text-fg-muted"></p>
+      </div>
+      <dl class="flex w-full flex-col gap-2 rounded-control bg-neutral-50 p-4 text-sm">
+        <div class="flex items-center justify-between"><dt class="text-fg-muted">Metode</dt><dd data-done-method class="font-medium"></dd></div>
+        <div class="flex items-center justify-between"><dt class="text-fg-muted">Total</dt><dd data-done-total class="font-medium tabular-nums"></dd></div>
+        <div data-done-change-row class="flex items-center justify-between"><dt class="text-fg-muted">Kembalian</dt><dd data-done-change class="font-medium tabular-nums"></dd></div>
+      </dl>
+      <div class="grid w-full grid-cols-2 gap-2">
+        <button type="button" data-print class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 text-sm border border-border bg-surface text-neutral-700 hover:bg-neutral-50 focus-visible:ring-neutral-300"><i class="ori ori-printer text-base"></i>Cetak struk</button>
+        <button type="button" data-modal-hide="pay-modal" data-new-order class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 text-sm bg-primary-600 text-white hover:bg-hover-primary focus-visible:ring-primary-500">Pesanan baru</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/js/vendor/flowbite.min.js"></script>
+<script src="../../assets/js/demo.js"></script>
+<script src="../../assets/js/kasir.js"></script>
+</body>
+</html>

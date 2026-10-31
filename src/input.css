@@ -4,3 +4,6 @@
 
 @source "../templates";
 @source "../assets/js";
+
+/* Kelas yang dibuat JS Flowbite saat runtime (backdrop modal/drawer, dst.) */
+@source "../node_modules/flowbite/dist/flowbite.js";

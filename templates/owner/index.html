@@ -18,13 +18,19 @@
     <span class="font-display text-lg font-bold">Kasira</span>
   </div>
   <div class="border-b border-border p-3">
-    <button type="button" class="flex w-full cursor-pointer items-center justify-between gap-3 rounded-control border border-border bg-surface px-3 py-2 text-start hover:bg-neutral-50">
+    <button type="button" id="outlet-toggle" data-dropdown-toggle="outlet-menu" data-dropdown-placement="bottom-start" data-dropdown-offset-distance="6" class="flex w-full cursor-pointer items-center justify-between gap-3 rounded-control border border-border bg-surface px-3 py-2 text-start hover:bg-neutral-50">
       <span class="min-w-0">
         <span class="block truncate text-sm font-semibold">Kopi Senja</span>
-        <span class="block truncate text-xs text-fg-muted">Semua outlet</span>
+        <span data-outlet-label class="block truncate text-xs text-fg-muted">Semua outlet</span>
       </span>
       <i class="ori ori-caret-down text-fg-subtle"></i>
     </button>
+    <div id="outlet-menu" class="z-50 hidden w-56 rounded-card border border-border bg-surface p-2 shadow-none">
+      <button type="button" data-outlet-option="Semua outlet" class="flex w-full cursor-pointer items-center justify-between rounded-control px-3 py-2.5 text-start text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800">Semua outlet</button>
+      <button type="button" data-outlet-option="Dago" class="flex w-full cursor-pointer items-center justify-between rounded-control px-3 py-2.5 text-start text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800">Dago</button>
+      <button type="button" data-outlet-option="Braga" class="flex w-full cursor-pointer items-center justify-between rounded-control px-3 py-2.5 text-start text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800">Braga</button>
+      <button type="button" data-outlet-option="Setiabudi" class="flex w-full cursor-pointer items-center justify-between rounded-control px-3 py-2.5 text-start text-sm font-medium text-fg-muted duration-fast hover:bg-neutral-100 hover:text-neutral-800">Setiabudi</button>
+    </div>
   </div>
   <nav class="flex flex-1 flex-col gap-5 overflow-y-auto scrollbar-none p-3">
       <div class="flex flex-col gap-1">
@@ -55,6 +61,8 @@
       <button type="button" data-drawer-target="sidebar" data-drawer-toggle="sidebar" aria-controls="sidebar" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 text-fg-muted hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-neutral-300 -ms-2 lg:hidden" aria-label="Buka menu"><i class="ori ori-list text-xl"></i></button>
       <span class="font-medium text-fg">Dashboard</span>
     </div>
+    <div class="flex shrink-0 items-center gap-2">
+      <a href="../kasir/index.html" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 text-sm bg-primary-600 text-white hover:bg-hover-primary focus-visible:ring-primary-500"><i class="ori ori-shopping-cart text-base"></i>Kasir</a>
     <div class="flex shrink-0 items-center">
       <button type="button" data-dropdown-toggle="user-menu" data-dropdown-placement="bottom-end" data-dropdown-offset-distance="8" class="flex cursor-pointer items-center gap-3 rounded-control py-1.5 ps-1.5 pe-1.5 duration-fast hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 sm:pe-3" aria-label="Menu akun">
         <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-600 text-sm font-semibold text-white">AD</span>
@@ -79,6 +87,7 @@
         <a href="onboarding-kategori.html" class="flex items-center gap-3 rounded-control px-3 py-2.5 text-sm font-medium text-danger-700 duration-fast hover:bg-danger-50"><i class="ori ori-sign-out text-lg"></i>Keluar</a>
       </div>
     </div>
+    </div>
   </header>
   <main class="flex w-full flex-1 flex-col gap-6 p-4 sm:p-6">
     <div class="flex flex-wrap items-start justify-between gap-4">
@@ -96,32 +105,32 @@
           <p class="text-micro font-semibold uppercase tracking-wider text-fg-subtle">Penjualan</p>
           <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-700"><i class="ori ori-wallet text-lg"></i></span>
         </div>
-        <p class="mt-3 font-display text-2xl font-bold tabular-nums">Rp 5,8 jt</p>
-        <p class="mt-2 flex items-center gap-1.5 text-xs text-fg-muted"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-success-50 text-success-700"><i class="ori ori-trend-up me-1"></i>12%</span> dari kemarin</p>
+        <p data-kpi="Penjualan" class="mt-3 font-display text-2xl font-bold tabular-nums">Rp 5,8 jt</p>
+        <p class="mt-2 flex items-center gap-1.5 text-xs text-fg-muted"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-success-50 text-success-700"><i class="ori ori-trend-up me-1"></i>12%</span> <span data-delta-label>dari kemarin</span></p>
       </div>
       <div class="rounded-card border border-border/70 bg-surface p-5">
         <div class="flex items-start justify-between gap-3">
           <p class="text-micro font-semibold uppercase tracking-wider text-fg-subtle">Transaksi</p>
           <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-700"><i class="ori ori-receipt text-lg"></i></span>
         </div>
-        <p class="mt-3 font-display text-2xl font-bold tabular-nums">142</p>
-        <p class="mt-2 flex items-center gap-1.5 text-xs text-fg-muted"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-success-50 text-success-700"><i class="ori ori-trend-up me-1"></i>8%</span> dari kemarin</p>
+        <p data-kpi="Transaksi" class="mt-3 font-display text-2xl font-bold tabular-nums">142</p>
+        <p class="mt-2 flex items-center gap-1.5 text-xs text-fg-muted"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-success-50 text-success-700"><i class="ori ori-trend-up me-1"></i>8%</span> <span data-delta-label>dari kemarin</span></p>
       </div>
       <div class="rounded-card border border-border/70 bg-surface p-5">
         <div class="flex items-start justify-between gap-3">
           <p class="text-micro font-semibold uppercase tracking-wider text-fg-subtle">Rata-rata transaksi</p>
           <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-700"><i class="ori ori-chart-line-up text-lg"></i></span>
         </div>
-        <p class="mt-3 font-display text-2xl font-bold tabular-nums">Rp 40.800</p>
-        <p class="mt-2 flex items-center gap-1.5 text-xs text-fg-muted"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-danger-50 text-danger-700"><i class="ori ori-trend-down me-1"></i>3%</span> dari kemarin</p>
+        <p data-kpi="Rata-rata transaksi" class="mt-3 font-display text-2xl font-bold tabular-nums">Rp 40.800</p>
+        <p class="mt-2 flex items-center gap-1.5 text-xs text-fg-muted"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-danger-50 text-danger-700"><i class="ori ori-trend-down me-1"></i>3%</span> <span data-delta-label>dari kemarin</span></p>
       </div>
       <div class="rounded-card border border-border/70 bg-surface p-5">
         <div class="flex items-start justify-between gap-3">
           <p class="text-micro font-semibold uppercase tracking-wider text-fg-subtle">Pelanggan baru</p>
           <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-700"><i class="ori ori-user-plus text-lg"></i></span>
         </div>
-        <p class="mt-3 font-display text-2xl font-bold tabular-nums">17</p>
-        <p class="mt-2 flex items-center gap-1.5 text-xs text-fg-muted"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-success-50 text-success-700"><i class="ori ori-trend-up me-1"></i>21%</span> dari kemarin</p>
+        <p data-kpi="Pelanggan baru" class="mt-3 font-display text-2xl font-bold tabular-nums">17</p>
+        <p class="mt-2 flex items-center gap-1.5 text-xs text-fg-muted"><span class="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-medium leading-none bg-success-50 text-success-700"><i class="ori ori-trend-up me-1"></i>21%</span> <span data-delta-label>dari kemarin</span></p>
       </div>
     </section>
 
@@ -313,5 +322,7 @@
 </div>
 
 <script src="../../assets/js/vendor/flowbite.min.js"></script>
+<script src="../../assets/js/demo.js"></script>
+<script src="../../assets/js/dashboard.js"></script>
 </body>
 </html>
