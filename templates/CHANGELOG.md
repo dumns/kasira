@@ -21,6 +21,8 @@ Dasar Ordinara: v0.1.0
   - `peran.html`: daftar Tim & Peran dengan level (L1-L4), jenis (Bawaan/Kustom), jumlah pengguna, dan cakupan; catatan aturan bahwa peran selevel tidak saling akses.
   - `peran-baru.html`: pembuatan role kustom (nama, level, cakupan, permission per grup).
 
+- **Halaman Transaksi Owner** (`templates/owner/transaksi.html`): riwayat transaksi semua outlet dengan pencarian, filter (periode, outlet, status, metode), tabel berstatus (Selesai, Menunggu bayar, Dibatalkan, Refund), dan pagination. Kolom menyesuaikan lebar layar: di mobile hanya No., Total, dan Status; Waktu, Pesanan, dan aksi muncul mulai `sm`; Outlet dan Pembayaran mulai `xl`; Kasir mulai `2xl`. Menu Transaksi di sidebar dan tautan "Lihat semua" di dashboard kini mengarah ke halaman ini.
+
 ### Changed
 
 - **Profil pengguna pindah ke navbar** (semua halaman Owner dengan sidebar): avatar, nama, dan peran di kanan navbar (nama dan peran disembunyikan di mobile), dengan menu dropdown berisi identitas akun (nama dan email), Profil saya, Pengaturan akun, dan Keluar. Kartu pengguna di dasar sidebar dihapus.
