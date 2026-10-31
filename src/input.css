@@ -1,0 +1,6 @@
+@import "@ordinara/ui/styles.css";
+@import "@ordinara/ui/fonts.css";
+@import "@ordinara/icons/mask.css";
+
+@source "../templates";
+@source "../assets/js";

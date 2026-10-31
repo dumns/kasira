@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<base href="/templates/owner/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pilih jenis usaha | Kasira</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="data:," />
+<meta name="theme-color" content="#2361e7" />
+<link rel="stylesheet" href="../../dist/output.css" />
+</head>
+<body class="min-h-screen bg-shell font-sans text-fg antialiased">
+
+<header class="flex h-16 items-center justify-center gap-3 border-b border-border bg-surface">
+  <span class="flex h-9 w-9 items-center justify-center rounded-control bg-primary-600 text-white"><i class="ori ori-storefront text-lg"></i></span>
+  <span class="font-display text-lg font-bold">Kasira</span>
+</header>
+
+<main class="mx-auto flex w-full max-w-4xl flex-col gap-8 px-4 py-10 sm:px-6 sm:py-14">
+  <div class="text-center">
+    <h1 class="font-display text-3xl font-bold">Jenis usaha Anda</h1>
+    <p class="mt-2 text-sm text-fg-muted">Fitur dan istilah menyesuaikan pilihan ini.</p>
+  </div>
+
+  <form action="index.html" class="flex flex-col gap-8">
+    <fieldset>
+      <legend class="sr-only">Jenis usaha</legend>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <label class="group relative flex cursor-pointer flex-col gap-3 rounded-card border border-border bg-surface p-5 duration-fast hover:border-primary-300 has-checked:border-primary-600 has-checked:bg-primary-50 has-focus-visible:ring-2 has-focus-visible:ring-primary-500 has-focus-visible:ring-offset-2">
+          <input type="radio" name="kategori" value="Restoran & Kafe" class="sr-only" checked />
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-50 text-primary-700 group-has-checked:bg-primary-600 group-has-checked:text-white"><i class="ori ori-fire text-xl"></i></span>
+          <span>
+            <span class="block text-sm font-semibold">Restoran & Kafe</span>
+            <span class="mt-0.5 block text-xs text-fg-muted">Meja, menu, pesanan dapur</span>
+          </span>
+          <i class="ori ori-check-circle absolute end-4 top-4 text-xl text-primary-600 opacity-0 duration-fast group-has-checked:opacity-100"></i>
+        </label>
+        <label class="group relative flex cursor-pointer flex-col gap-3 rounded-card border border-border bg-surface p-5 duration-fast hover:border-primary-300 has-checked:border-primary-600 has-checked:bg-primary-50 has-focus-visible:ring-2 has-focus-visible:ring-primary-500 has-focus-visible:ring-offset-2">
+          <input type="radio" name="kategori" value="Retail" class="sr-only" />
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-50 text-primary-700 group-has-checked:bg-primary-600 group-has-checked:text-white"><i class="ori ori-shopping-bag text-xl"></i></span>
+          <span>
+            <span class="block text-sm font-semibold">Retail</span>
+            <span class="mt-0.5 block text-xs text-fg-muted">Barcode, stok, kasbon</span>
+          </span>
+          <i class="ori ori-check-circle absolute end-4 top-4 text-xl text-primary-600 opacity-0 duration-fast group-has-checked:opacity-100"></i>
+        </label>
+        <label class="group relative flex cursor-pointer flex-col gap-3 rounded-card border border-border bg-surface p-5 duration-fast hover:border-primary-300 has-checked:border-primary-600 has-checked:bg-primary-50 has-focus-visible:ring-2 has-focus-visible:ring-primary-500 has-focus-visible:ring-offset-2">
+          <input type="radio" name="kategori" value="Kost & Kontrakan" class="sr-only" />
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-50 text-primary-700 group-has-checked:bg-primary-600 group-has-checked:text-white"><i class="ori ori-house text-xl"></i></span>
+          <span>
+            <span class="block text-sm font-semibold">Kost & Kontrakan</span>
+            <span class="mt-0.5 block text-xs text-fg-muted">Kamar, tagihan bulanan</span>
+          </span>
+          <i class="ori ori-check-circle absolute end-4 top-4 text-xl text-primary-600 opacity-0 duration-fast group-has-checked:opacity-100"></i>
+        </label>
+        <label class="group relative flex cursor-pointer flex-col gap-3 rounded-card border border-border bg-surface p-5 duration-fast hover:border-primary-300 has-checked:border-primary-600 has-checked:bg-primary-50 has-focus-visible:ring-2 has-focus-visible:ring-primary-500 has-focus-visible:ring-offset-2">
+          <input type="radio" name="kategori" value="Laundry" class="sr-only" />
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-50 text-primary-700 group-has-checked:bg-primary-600 group-has-checked:text-white"><i class="ori ori-arrows-clockwise text-xl"></i></span>
+          <span>
+            <span class="block text-sm font-semibold">Laundry</span>
+            <span class="mt-0.5 block text-xs text-fg-muted">Order berstatus, antar jemput</span>
+          </span>
+          <i class="ori ori-check-circle absolute end-4 top-4 text-xl text-primary-600 opacity-0 duration-fast group-has-checked:opacity-100"></i>
+        </label>
+        <label class="group relative flex cursor-pointer flex-col gap-3 rounded-card border border-border bg-surface p-5 duration-fast hover:border-primary-300 has-checked:border-primary-600 has-checked:bg-primary-50 has-focus-visible:ring-2 has-focus-visible:ring-primary-500 has-focus-visible:ring-offset-2">
+          <input type="radio" name="kategori" value="Salon & Spa" class="sr-only" />
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-50 text-primary-700 group-has-checked:bg-primary-600 group-has-checked:text-white"><i class="ori ori-scissors text-xl"></i></span>
+          <span>
+            <span class="block text-sm font-semibold">Salon & Spa</span>
+            <span class="mt-0.5 block text-xs text-fg-muted">Booking, stylist, komisi</span>
+          </span>
+          <i class="ori ori-check-circle absolute end-4 top-4 text-xl text-primary-600 opacity-0 duration-fast group-has-checked:opacity-100"></i>
+        </label>
+        <label class="group relative flex cursor-pointer flex-col gap-3 rounded-card border border-border bg-surface p-5 duration-fast hover:border-primary-300 has-checked:border-primary-600 has-checked:bg-primary-50 has-focus-visible:ring-2 has-focus-visible:ring-primary-500 has-focus-visible:ring-offset-2">
+          <input type="radio" name="kategori" value="Bengkel" class="sr-only" />
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-50 text-primary-700 group-has-checked:bg-primary-600 group-has-checked:text-white"><i class="ori ori-gear text-xl"></i></span>
+          <span>
+            <span class="block text-sm font-semibold">Bengkel</span>
+            <span class="mt-0.5 block text-xs text-fg-muted">Work order, sparepart</span>
+          </span>
+          <i class="ori ori-check-circle absolute end-4 top-4 text-xl text-primary-600 opacity-0 duration-fast group-has-checked:opacity-100"></i>
+        </label>
+        <label class="group relative flex cursor-pointer flex-col gap-3 rounded-card border border-border bg-surface p-5 duration-fast hover:border-primary-300 has-checked:border-primary-600 has-checked:bg-primary-50 has-focus-visible:ring-2 has-focus-visible:ring-primary-500 has-focus-visible:ring-offset-2">
+          <input type="radio" name="kategori" value="Gym & Studio" class="sr-only" />
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-50 text-primary-700 group-has-checked:bg-primary-600 group-has-checked:text-white"><i class="ori ori-heart text-xl"></i></span>
+          <span>
+            <span class="block text-sm font-semibold">Gym & Studio</span>
+            <span class="mt-0.5 block text-xs text-fg-muted">Keanggotaan, kelas</span>
+          </span>
+          <i class="ori ori-check-circle absolute end-4 top-4 text-xl text-primary-600 opacity-0 duration-fast group-has-checked:opacity-100"></i>
+        </label>
+        <label class="group relative flex cursor-pointer flex-col gap-3 rounded-card border border-border bg-surface p-5 duration-fast hover:border-primary-300 has-checked:border-primary-600 has-checked:bg-primary-50 has-focus-visible:ring-2 has-focus-visible:ring-primary-500 has-focus-visible:ring-offset-2">
+          <input type="radio" name="kategori" value="Lapangan" class="sr-only" />
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-50 text-primary-700 group-has-checked:bg-primary-600 group-has-checked:text-white"><i class="ori ori-calendar-check text-xl"></i></span>
+          <span>
+            <span class="block text-sm font-semibold">Lapangan</span>
+            <span class="mt-0.5 block text-xs text-fg-muted">Booking per jam</span>
+          </span>
+          <i class="ori ori-check-circle absolute end-4 top-4 text-xl text-primary-600 opacity-0 duration-fast group-has-checked:opacity-100"></i>
+        </label>
+        <label class="group relative flex cursor-pointer flex-col gap-3 rounded-card border border-border bg-surface p-5 duration-fast hover:border-primary-300 has-checked:border-primary-600 has-checked:bg-primary-50 has-focus-visible:ring-2 has-focus-visible:ring-primary-500 has-focus-visible:ring-offset-2">
+          <input type="radio" name="kategori" value="Bimbel & Kursus" class="sr-only" />
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-50 text-primary-700 group-has-checked:bg-primary-600 group-has-checked:text-white"><i class="ori ori-graduation-cap text-xl"></i></span>
+          <span>
+            <span class="block text-sm font-semibold">Bimbel & Kursus</span>
+            <span class="mt-0.5 block text-xs text-fg-muted">Tagihan SPP, absensi</span>
+          </span>
+          <i class="ori ori-check-circle absolute end-4 top-4 text-xl text-primary-600 opacity-0 duration-fast group-has-checked:opacity-100"></i>
+        </label>
+        <label class="group relative flex cursor-pointer flex-col gap-3 rounded-card border border-border bg-surface p-5 duration-fast hover:border-primary-300 has-checked:border-primary-600 has-checked:bg-primary-50 has-focus-visible:ring-2 has-focus-visible:ring-primary-500 has-focus-visible:ring-offset-2">
+          <input type="radio" name="kategori" value="Rental" class="sr-only" />
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-50 text-primary-700 group-has-checked:bg-primary-600 group-has-checked:text-white"><i class="ori ori-key text-xl"></i></span>
+          <span>
+            <span class="block text-sm font-semibold">Rental</span>
+            <span class="mt-0.5 block text-xs text-fg-muted">Kalender sewa, deposit, denda</span>
+          </span>
+          <i class="ori ori-check-circle absolute end-4 top-4 text-xl text-primary-600 opacity-0 duration-fast group-has-checked:opacity-100"></i>
+        </label>
+        <label class="group relative flex cursor-pointer flex-col gap-3 rounded-card border border-border bg-surface p-5 duration-fast hover:border-primary-300 has-checked:border-primary-600 has-checked:bg-primary-50 has-focus-visible:ring-2 has-focus-visible:ring-primary-500 has-focus-visible:ring-offset-2">
+          <input type="radio" name="kategori" value="Klinik & Apotek" class="sr-only" />
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-50 text-primary-700 group-has-checked:bg-primary-600 group-has-checked:text-white"><i class="ori ori-plus-circle text-xl"></i></span>
+          <span>
+            <span class="block text-sm font-semibold">Klinik & Apotek</span>
+            <span class="mt-0.5 block text-xs text-fg-muted">Antrean, tindakan, obat</span>
+          </span>
+          <i class="ori ori-check-circle absolute end-4 top-4 text-xl text-primary-600 opacity-0 duration-fast group-has-checked:opacity-100"></i>
+        </label>
+        <label class="group relative flex cursor-pointer flex-col gap-3 rounded-card border border-border bg-surface p-5 duration-fast hover:border-primary-300 has-checked:border-primary-600 has-checked:bg-primary-50 has-focus-visible:ring-2 has-focus-visible:ring-primary-500 has-focus-visible:ring-offset-2">
+          <input type="radio" name="kategori" value="Lainnya" class="sr-only" />
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-50 text-primary-700 group-has-checked:bg-primary-600 group-has-checked:text-white"><i class="ori ori-squares-four text-xl"></i></span>
+          <span>
+            <span class="block text-sm font-semibold">Lainnya</span>
+            <span class="mt-0.5 block text-xs text-fg-muted">Mulai dari pengaturan dasar</span>
+          </span>
+          <i class="ori ori-check-circle absolute end-4 top-4 text-xl text-primary-600 opacity-0 duration-fast group-has-checked:opacity-100"></i>
+        </label>
+      </div>
+    </fieldset>
+    <div class="flex justify-end">
+      <button type="submit" class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 text-sm bg-primary-600 text-white hover:bg-hover-primary focus-visible:ring-primary-500 h-12 px-6 text-btn-lg w-full sm:w-auto">Lanjutkan<i class="ori ori-arrow-right text-base"></i></button>
+    </div>
+  </form>
+</main>
+
+</body>
+</html>
